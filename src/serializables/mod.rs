@@ -3,7 +3,7 @@ use crate::database::user::{User};
 
 #[derive(Serialize)]
 pub struct RestPublicUser {
-    pub id: i64,
+    pub id: u64,
     pub name: String,
     #[serde(alias = "type")]
     pub account_type: u8,
