@@ -1,4 +1,4 @@
-mod databases;
+mod database;
 mod routes;
 mod serializables;
 
@@ -13,7 +13,7 @@ async fn main() -> std::io::Result<()> {
 
     let rbatis: Rbatis = Rbatis::new();
     rbatis
-        .link("postgresql://postgres:password@localhost:5432/sleeper")
+        .link("postgresql://postgres:psgql9978@localhost:5433/sleeper")
         .await
         .expect("database connection failed");
     let rbatis = Arc::new(rbatis);
