@@ -1,0 +1,21 @@
+[package]
+name = "nexus"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+tokio = "1.17.0"
+actix-web = "4.0.1"
+
+serde_json = "1"
+serde = { version = "1.0", features = ["derive"] }
+
+chrono = { version = "0.4", features = ["serde"] }
+
+rbson = { version = "2.0.3", features = ["uuid-0_8", "chrono-0_4"] }
+rbatis = { version = "3.0", default-features = false, features = ["runtime-async-std-rustls", "postgres"] }
+
+log = "0.4.14"
+fast_log = "1.5.1"
