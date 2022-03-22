@@ -1,6 +1,7 @@
 mod database;
 mod routes;
 mod serializables;
+mod snowflake;
 
 use std::{sync::Arc};
 
@@ -10,10 +11,10 @@ use rbatis::rbatis::Rbatis;
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     fast_log::init(fast_log::config::Config::new().console()).expect("logger init failed");
-
+    log::info!("initiated logging");
     let rbatis: Rbatis = Rbatis::new();
     rbatis
-        .link("postgresql://postgres:psgql9978@localhost:5433/sleeper")
+        .link("postgresql://postgres:rustyCat@localhost:5432/sleeper")
         .await
         .expect("database connection failed");
     let rbatis = Arc::new(rbatis);
