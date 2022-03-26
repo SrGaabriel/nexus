@@ -2,6 +2,7 @@ use actix_web::{get, HttpRequest, HttpResponse, Responder};
 
 use crate::{database::user::*, AppState};
 
+pub mod auth;
 pub mod user;
 
 #[get("/api")]
