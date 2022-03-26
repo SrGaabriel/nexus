@@ -1,6 +1,6 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,intellij+all,rust
-# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,intellij+all,rust
+# Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,intellij+all,rust,dotenv
+# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,intellij+all,rust,dotenv
 
 ### Intellij+all ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
@@ -125,7 +125,10 @@ Cargo.lock
 .history
 .ionide
 
+### dotenv ###
+.env
+
 # Support for Project snippet scope
 
-# End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,intellij+all,rust
+# End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,intellij+all,rust,dotenv
 

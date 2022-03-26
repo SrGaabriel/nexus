@@ -19,3 +19,7 @@ rbatis = { version = "3.0", default-features = false, features = ["runtime-async
 
 log = "0.4.14"
 fast_log = "1.5.1"
+
+jwt = "0.16.0"
+sha2 = "0.10.2"
+hmac = "0.12.1"
