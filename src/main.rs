@@ -48,6 +48,7 @@ async fn main() -> std::io::Result<()> {
             .service(routes::user::get_myself)
             .service(routes::user::get_user)
             .service(routes::auth::signup)
+            .service(routes::auth::login)
     })
     .bind(server_address)?
     .run()

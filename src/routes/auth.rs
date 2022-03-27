@@ -8,8 +8,8 @@ use std::sync::Arc;
 use crate::{
     database,
     serializables::{
-        auth::{RestUserRegistrationRequest, RestUserRegistrationResponse},
-        RestPublicUser,
+        auth::{RestUserRegistrationRequest, RestUserRegistrationResponse, RestUserLoginRequest, RestUserLoginResponse},
+        RestPublicUser, RestSelfUser,
     },
     AppState,
 };
@@ -41,5 +41,22 @@ async fn signup(
                 user: RestPublicUser::from(user),
             })
         }
+    }
+}
+
+#[post("/api/v1/login")]
+async fn login(app_state: web::Data<Arc<AppState>>, login: Json<RestUserLoginRequest>) -> impl Responder {
+    let found_user = database::user::search_by_email(app_state.rbatis.as_ref(), &login.email).await.ok();
+    if found_user.is_none() {
+        return HttpResponse::NotFound().finish()
+    }
+    let unwrapped_found_user = found_user.unwrap();
+    if unwrapped_found_user.password.as_ref().unwrap() != &login.password {
+        return HttpResponse::Unauthorized().finish()
+    } else {
+        return HttpResponse::Ok().json(RestUserLoginResponse {
+            token: app_state.authenticator.create_token(&unwrapped_found_user.id.unwrap()),
+            user: RestSelfUser::from(unwrapped_found_user)
+        })
     }
 }
