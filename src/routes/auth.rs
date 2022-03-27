@@ -16,7 +16,7 @@ use crate::{
 
 #[post("/api/v1/signup")]
 async fn signup(
-    app_state: web::Data<Arc<AppState>>,
+    app_state: web::Data<AppState>,
     registration: Json<RestUserRegistrationRequest>,
 ) -> impl Responder {
     let common_user =
@@ -45,7 +45,7 @@ async fn signup(
 }
 
 #[post("/api/v1/login")]
-async fn login(app_state: web::Data<Arc<AppState>>, login: Json<RestUserLoginRequest>) -> impl Responder {
+async fn login(app_state: web::Data<AppState>, login: Json<RestUserLoginRequest>) -> impl Responder {
     let found_user = database::user::search_by_email(app_state.rbatis.as_ref(), &login.email).await.ok();
     if found_user.is_none() {
         return HttpResponse::NotFound().finish()

@@ -38,7 +38,6 @@ async fn main() -> std::io::Result<()> {
         authenticator: authenticator,
         snowflake: Arc::new(Snowflake::default()),
     };
-    let app_state = Arc::new(app_state);
 
     HttpServer::new(move || {
         App::new()
