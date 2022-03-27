@@ -45,6 +45,7 @@ async fn main() -> std::io::Result<()> {
             .wrap(Logger::default())
             .app_data(web::Data::new(app_state.to_owned()))
             .service(routes::index)
+            .service(routes::user::get_myself)
             .service(routes::user::get_user)
             .service(routes::auth::signup)
     })

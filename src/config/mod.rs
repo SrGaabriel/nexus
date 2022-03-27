@@ -1,4 +1,4 @@
-use std::{fs::{self, File}, path::Path, process::exit, time::Instant};
+use std::{fs::{self, File}, path::Path, process::exit};
 
 use chrono::Utc;
 use serde::{Serialize, Deserialize};
